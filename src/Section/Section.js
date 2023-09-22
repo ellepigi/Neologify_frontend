@@ -9,15 +9,13 @@ export default function Section  () {
   useEffect(() => {
     axios.get('http://localhost:8000/words')
       .then(response => {
-        // Gestisci la risposta dal backend
         console.log(response.data);
         setData(response.data);
       })
       .catch(error => {
-        // Gestisci gli errori
         console.error(error);
       });
-  }, []); // Il secondo argomento vuoto [] indica che l'effetto viene eseguito solo una volta durante il montaggio iniziale del componente
+  }, []); 
 
   return (
     <div className='page m-10 mb-12 h-screen'>
