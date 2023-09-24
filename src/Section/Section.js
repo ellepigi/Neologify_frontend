@@ -20,12 +20,12 @@ export default function Section  () {
   }, []); 
 
   return (
-    <div className='page m-10 mb-12 h-screen'>
+    <div className='page m-10 mb-12 h-full'>
       <h1 className='text-left text-4xl ml-2'>Trending</h1>
 
-    <div className='cards flex mt-8 gap-2 '>
+    <div className='cards flex mt-8 space-y-4 gap-2 flex-wrap w-full justify-center'>
       {trending.map(item => (
-        <Card key={item.id} title={item.title} comment={item.comment} language={item.language} />
+        <Card className="max-w-xs" key={item.id} title={item.title} comment={item.comment} language={item.language} />
       ))}  
     </div>
     </div>
