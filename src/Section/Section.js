@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from "../firebaseConfig"
 import Card from '../Card/Card'
 
 export default function Section  () {
 
-  const [data, setData] = useState([]);
+  const [trending, setTrending] = useState([]);
+  
+  const wordsCollectionRef = collection(db, "words")
 
-  useEffect(() => {
-    axios.get('http://localhost:8000/words')
-      .then(response => {
-        console.log(response.data);
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+  useEffect( () => {
+   const getWords = async () => {
+       const data = await getDocs(wordsCollectionRef);
+       setTrending(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+       console.log(data);
+   }
+
+   getWords();
   }, []); 
 
   return (
@@ -22,9 +24,9 @@ export default function Section  () {
       <h1 className='text-left text-4xl ml-2'>Trending</h1>
 
     <div className='cards flex mt-8 gap-2 '>
-    {data.map(item => (
-        <Card key={item.id} title={item.title} />
-      ))}
+      {trending.map(item => (
+        <Card key={item.id} title={item.title} comment={item.comment} language={item.language} />
+      ))}  
     </div>
     </div>
   )

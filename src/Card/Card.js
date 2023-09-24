@@ -5,8 +5,9 @@ export default function Card(props){
 <div class="max-w-sm rounded overflow-hidden shadow-lg rounded-md">
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">{props.title}</div>
+     <p className=''>{props.language}</p> 
     <p class="text-gray-700 text-base">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+      {props.comment}
     </p>
   </div>
   <div class="px-6 pt-4 pb-2">

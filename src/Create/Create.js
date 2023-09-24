@@ -8,15 +8,21 @@ import { db } from '../firebaseConfig.js';
 
 export default function Create() {
 
+  const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
+  const [language, setLanguage] =useState('English');
 
   const wordsCollectionRef = collection(db, "words");
   const CreateWord = async (e) => {
     e.preventDefault();
-    await addDoc(wordsCollectionRef, {comment});
+    await addDoc(wordsCollectionRef, {title, comment, language});
   }
 
-
+  const handleLanguageChange = (event) => {
+    const selectedLanguage = event.target.value;
+    setLanguage(selectedLanguage);
+    console.log(selectedLanguage)
+  }
   
 
   return (
@@ -26,8 +32,21 @@ export default function Create() {
         <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Sumbit</h2>
     </div>
     <form onSubmit={CreateWord} className="mb-6">
+    <div class="mb-6">
+
+    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Language</label>
+    <select  id="countries" value={language} onChange={handleLanguageChange} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+     <option value="English">English</option>
+     <option value="Italian">Italian</option>
+ 
+    </select>
+    </div>
+    <div class="mb-6">
+    <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Neologism</label>
+    <input value={title} onChange={(event) => setTitle(event.target.value)} type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+    </div>
+        <label htmlFor="comment" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Definition</label>
         <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <label htmlFor="comment" className="sr-only">Your comment</label>
             <textarea id="comment" rows="6"  value={comment} onChange={(event) => setComment(event.target.value)}
                 className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                 placeholder="Write a comment..." required></textarea>
