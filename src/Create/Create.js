@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../firebaseConfig.js';
-// 'use client';
-
+import { db, auth } from '../firebaseConfig.js';
 import { Button, Modal } from 'flowbite-react';
 
 
@@ -16,16 +14,29 @@ export default function Create() {
   const [openModal, setOpenModal] = useState('');
   const props = { openModal, setOpenModal };
 
+  const user = auth.currentUser;
+
 
   const wordsCollectionRef = collection(db, "words");
+
+
+
 
   const CreateWord = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(wordsCollectionRef, { title, comment, language });
+      if(!user){
+      await addDoc(wordsCollectionRef, { title, comment, language,});
       setOpenModal('success'); 
       setTitle('');
-      setComment('');
+      setComment('');} else {
+        const { uid, displayName, email, photoURL } = user;
+        await addDoc(wordsCollectionRef, { title, comment, language, userId: uid, userName: displayName, 
+          userEmail: email, photo: photoURL });
+        setOpenModal('success'); 
+        setTitle('');
+        setComment('');
+      }
     } catch (error) {
       setOpenModal('error'); 
     }
@@ -65,8 +76,11 @@ export default function Create() {
                 className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                 placeholder="Write a comment..." required></textarea>
         </div>
+  <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
+    <input type="text" id="tags" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
         <button type="submit"
-            className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 
+            className="inline-flex mt-4 items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 
             hover:bg-blue-900 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
             Post comment
         </button>

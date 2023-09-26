@@ -150,9 +150,25 @@ export default function Nav() {
         <Navbar.Link href="/create">
           Create
         </Navbar.Link>
+        <Dropdown
+               arrowIcon={false}
+               inline
+               label="Languages"
+             >
+              <div className='flex flex-col'>
+               <span className='border-b border-gray-100 '>
+                  English
+                 </span>
+               <span>
+                  Italian
+                 </span>
+                 </div>
+              </Dropdown>
+
         <Navbar.Link href="#">
-          Languages
+          Tags
         </Navbar.Link>
+
         <Navbar.Link href="#">
           About
         </Navbar.Link>
