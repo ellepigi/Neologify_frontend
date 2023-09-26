@@ -1,6 +1,6 @@
 
 import './App.css';
-import Navbar from './Navbar/Navbar';
+import Nav from './Navbar/Navbar';
 import Section from './Section/Section';
 import Create from './Create/Create';
 import Footer from './Footer/Footer';
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Nav />
         <Routes>
           <Route path="/" element={<Section />} />
           <Route path="/create" element={<Create />} />
