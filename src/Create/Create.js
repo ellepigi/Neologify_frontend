@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp  } from 'firebase/firestore';
 import { db, auth } from '../firebaseConfig.js';
 import { Button, Modal } from 'flowbite-react';
 
@@ -32,7 +32,7 @@ export default function Create() {
       setComment('');} else {
         const { uid, displayName, email, photoURL } = user;
         await addDoc(wordsCollectionRef, { title, comment, language, userId: uid, userName: displayName, 
-          userEmail: email, photo: photoURL });
+          userEmail: email, photo: photoURL, createdAt: serverTimestamp() });
         setOpenModal('success'); 
         setTitle('');
         setComment('');
