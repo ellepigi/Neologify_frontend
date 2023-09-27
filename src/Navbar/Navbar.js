@@ -139,17 +139,17 @@ export default function Nav() {
    
       <Navbar.Collapse >
 
-        <Navbar.Link
+        <Link
           active
-          href="/"
+          to="/"
         >
           <p>
             Home
           </p>
-        </Navbar.Link>
-        <Navbar.Link href="/create">
+        </Link>
+        <Link to="/create">
           Create
-        </Navbar.Link>
+        </Link>
         <Dropdown
                arrowIcon={false}
                inline
@@ -165,13 +165,13 @@ export default function Nav() {
                  </div>
               </Dropdown>
 
-        <Navbar.Link href="#">
+        <Link to="#">
           Tags
-        </Navbar.Link>
+        </Link>
 
-        <Navbar.Link href="#">
+        <Link to="#">
           About
-        </Navbar.Link>
+        </Link>
         
       </Navbar.Collapse>
     </Navbar>
