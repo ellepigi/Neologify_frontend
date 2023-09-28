@@ -1,22 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { orderBy} from 'firebase/firestore';
 import { getAllCards } from '../serivces/cardService'; 
+import { Spinner } from 'flowbite-react';
 import Card from '../Card/Card'
 
 export default function Section  () {
 
   const [latest, setLatest] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   
   useEffect( () => {
    const getWords = async () => {
     const data = await getAllCards();
+    console.log(data)
+    data.sort((a, b) => b.createdAt - a.createdAt);
+    console.log(data)
     setLatest(data);
+    setLoading(false);
     
    }
 
    getWords();
   }, []); 
+
+  if(loading === true){
+    return (
+      <div className='flex justify-center items-center h-screen'>
+      <Spinner 
+      size="xl"
+      ></Spinner>
+      </div>
+    )
+  }
 
   return (
     <div className='page m-10 mb-12 h-full'>

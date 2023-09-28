@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Label, Textarea, Spinner } from 'flowbite-react';
 import { useParams } from 'react-router-dom';
 import { getAllCards } from '../serivces/cardService'; 
 
@@ -25,20 +26,44 @@ export default function Details() {
   }, [cardId]);
 
   if (!card) {
-    return <div>Caricamento in corso...</div>;
+    return (
+       
+        <div className='flex justify-center items-center h-screen'>
+        <Spinner 
+        size="xl"
+        ></Spinner>
+        </div>
+      
+    )
   }
 
   return (
 
-  
 
- 
-
-
-
-    <div>
-      <h1>{card.title}</h1>
+    <div className='min-h-screen flex flex-col items-center mt-12'>
+      <div className='mb-8'>
+      <h1 className='text-lg mb-4'>{card.title}</h1>
+      <p className='text-md italic'>"{card.comment}"</p>
+      </div>
+      <div
+      className="max-w-md"
+      id="textarea"
+    >
+      <div className="mb-2 block">
+        <Label
+          htmlFor="comment"
+          value="Your message"
+        />
+      </div>
+      <Textarea
+        id="comment"
+        placeholder="Leave a comment..."
+        required
+        rows={4}
+      />
     </div>
+    </div>
+    
   );
 }
     
