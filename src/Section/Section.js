@@ -41,7 +41,7 @@ export default function Section  () {
       {latest.map(item => (
         
         <Card className="max-w-xs" key={item.id} id={item.id} title={item.title} comment={item.comment} language={item.language}
-        photo={item.photo} username={item.userName} />
+        photo={item.photo} username={item.userName} tags={item.tags} />
         
       ))}  
     </div>

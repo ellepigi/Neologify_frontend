@@ -165,7 +165,7 @@ export default function Nav() {
                  </div>
               </Dropdown>
 
-        <Link to="#">
+        <Link to="/tags">
           Tags
         </Link>
 

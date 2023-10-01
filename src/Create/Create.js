@@ -50,10 +50,11 @@ export default function Create() {
       setComment('');} else {
         const { uid, displayName, email, photoURL } = user;
         await addDoc(wordsCollectionRef, { title, comment, language, userId: uid, userName: displayName, 
-          userEmail: email, photo: photoURL, createdAt: serverTimestamp() });
+          userEmail: email, photo: photoURL, tags: tags, createdAt: serverTimestamp() });
         setOpenModal('success'); 
         setTitle('');
         setComment('');
+        setTags([]);
       }
     } catch (error) {
       setOpenModal('error'); 
