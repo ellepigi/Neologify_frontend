@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { addDoc, collection, serverTimestamp  } from 'firebase/firestore';
 import { db, auth } from '../firebaseConfig.js';
-import { Button, Modal } from 'flowbite-react';
+import { Button, Modal, Badge } from 'flowbite-react';
 
 
 
@@ -14,10 +14,28 @@ export default function Create() {
   const [openModal, setOpenModal] = useState('');
   const props = { openModal, setOpenModal };
 
+
+
   const user = auth.currentUser;
 
 
   const wordsCollectionRef = collection(db, "words");
+
+
+  const [tags, setTags] = useState([]);
+
+
+  const removeTags = indexToRemove => {
+		setTags([...tags.filter((_, index) => index !== indexToRemove)]);
+	};
+	const addTags = event => {
+		if (event.target.value !== "") {
+			setTags([...tags, event.target.value]);
+			// selectedTags([...tags, event.target.value]);
+			event.target.value = "";
+      console.log(tags)
+		}
+  }
 
 
 
@@ -77,8 +95,17 @@ export default function Create() {
                 placeholder="Write a comment..." required></textarea>
         </div>
   <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
-    <input type="text" id="tags" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-
+  <div className='flex flex-wrap justify-start bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+     {tags.map((tag, index) =>{
+        return      <span key={index} class="flex items-center gap-2 inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          {tag}
+          <button onClick={() => removeTags(index)}   className="ml-1 bg-red-500 text-white rounded-full p-1 w-4 h-4 text-center leading-none hover:bg-red-700 focus:bg-red-700" style={{fontSize:"8px"}} type='button'>X</button>
+          </span>
+     })} 
+    <input type='text' onKeyUp={event => event.key === " " ? addTags(event) : null} className='border-none focus:ring-transparent  bg-transparent w-full' />
+  </div>
+    {/* <input type="text" id="tags" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> */}
+      
         <button type="submit"
             className="inline-flex mt-4 items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 
             hover:bg-blue-900 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
@@ -88,6 +115,7 @@ export default function Create() {
     
   </div>
 </section>
+
 
  {/* success modal */}
 

@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom'
 export default function Card(props){
 
 
+	
+
   return (
 <div class="max-w-sm rounded overflow-hidden shadow-lg rounded-md">
   <div class="px-6 py-4">
   <Link to={`/details/${props.id}`}>
     <div class="font-bold text-xl mb-2">{props.title}</div>
   </Link>
-     <p className=''>{props.language}</p> 
-    <p class="text-gray-700 text-base">
-      {props.comment}
+     <p className='mt-2 text-sm'>{props.language}</p> 
+    <p class="text-gray-700 text-base italic my-5">
+      "{props.comment}""
     </p>
     <div className='flex items-center gap-2 mt-2'>
    {props.photo && <img alt='#' src={props.photo} className='rounded h-5 w-5' />}
