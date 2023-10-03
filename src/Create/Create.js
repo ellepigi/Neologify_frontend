@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { addDoc, collection, serverTimestamp  } from 'firebase/firestore';
 import { db, auth } from '../firebaseConfig.js';
-import { Button, Modal, Badge } from 'flowbite-react';
+import { Button, Modal } from 'flowbite-react';
 
 
 
@@ -29,13 +29,12 @@ export default function Create() {
 		setTags([...tags.filter((_, index) => index !== indexToRemove)]);
 	};
 	const addTags = event => {
-		if (event.target.value !== "") {
-			setTags([...tags, event.target.value]);
-			// selectedTags([...tags, event.target.value]);
-			event.target.value = "";
-      console.log(tags)
-		}
+    const tag = event.target.value.trim(); 
+    if (tag !== '') {
+      setTags([...tags, tag]);
+      event.target.value = '';
   }
+}
 
 
 

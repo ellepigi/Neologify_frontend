@@ -1,33 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Button, Navbar, Dropdown, Avatar } from 'flowbite-react';
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
-import { auth } from "../firebaseConfig"
-import { useEffect, useState } from 'react';
+import { useAuthValue } from '../context/AuthContext';
 
 export default function Nav() {
-
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user); 
-    });
-      // Clean up the listener when the component unmounts
-      return () => unsubscribe();
-  }, []);
-
-  const handleSignIn = async (e) => {
-     const provider = await new GoogleAuthProvider();
-     return signInWithPopup(auth, provider)
-    
-  }
   
+  const { user, handleSignIn, handleSignOut } = useAuthValue();
 
-  const handleSignOut = async () => {
-    await signOut(auth);
-  };
-
+  
   return (
 
 <>
@@ -86,7 +66,7 @@ export default function Nav() {
       fluid
       rounded
     >
-      <Navbar.Brand href="/">
+      <Navbar.Brand className='hover:text-blue-500' href="/">
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           Neologify
         </span>
@@ -139,7 +119,7 @@ export default function Nav() {
    
       <Navbar.Collapse >
 
-        <Link
+        <Link className='hover:text-blue-500'
           active
           to="/"
         >
@@ -147,29 +127,16 @@ export default function Nav() {
             Home
           </p>
         </Link>
-        <Link to="/create">
-          Create
+        <Link className='hover:text-blue-500' to="/create">
+          Submit
         </Link>
-        <Dropdown
-               arrowIcon={false}
-               inline
-               label="Languages"
-             >
-              <div className='flex flex-col'>
-               <span className='border-b border-gray-100 '>
-                  English
-                 </span>
-               <span>
-                  Italian
-                 </span>
-                 </div>
-              </Dropdown>
+        
 
-        <Link to="/tags">
+        <Link className='hover:text-blue-500' to="/tags">
           Tags
         </Link>
 
-        <Link to="#">
+        <Link className='hover:text-blue-500' to="#">
           About
         </Link>
         

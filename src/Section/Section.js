@@ -12,9 +12,7 @@ export default function Section  () {
   useEffect( () => {
    const getWords = async () => {
     const data = await getAllCards();
-    console.log(data)
     data.sort((a, b) => b.createdAt - a.createdAt);
-    console.log(data)
     setLatest(data);
     setLoading(false);
     
@@ -40,11 +38,21 @@ export default function Section  () {
     <div className='cards flex mt-8 space-y-4 gap-2 flex-wrap w-full justify-center'>
       {latest.map(item => (
         
-        <Card className="max-w-xs" key={item.id} id={item.id} title={item.title} comment={item.comment} language={item.language}
+        <Card  key={item.id} id={item.id} title={item.title} comment={item.comment} language={item.language}
         photo={item.photo} username={item.userName} tags={item.tags} />
         
       ))}  
     </div>
+    <h1 className='text-left text-4xl ml-2 mt-8'>Highest Rated</h1>
+
+<div className='cards flex mt-8 space-y-4 gap-2 flex-wrap w-full justify-center'>
+  {latest.map(item => (
+    
+    <Card  key={item.id} id={item.id} title={item.title} comment={item.comment} language={item.language}
+    photo={item.photo} username={item.userName} tags={item.tags} />
+    
+  ))}  
+</div>
     </div>
   )
 }
