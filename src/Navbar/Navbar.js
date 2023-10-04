@@ -5,7 +5,7 @@ import { useAuthValue } from '../context/AuthContext';
 
 export default function Nav() {
   
-  const { user, handleSignIn, handleSignOut } = useAuthValue();
+  const { currentUser, handleSignIn, handleSignOut } = useAuthValue();
 
   
   return (
@@ -74,25 +74,28 @@ export default function Nav() {
       </Navbar.Brand>
 
       <div className="flex md:order-2">
-      {user ? ( 
+      {currentUser ? ( 
                <Dropdown
                arrowIcon={false}
                inline
-               label={<Avatar alt="User settings" img={user.photoURL} rounded/>}
+               label={<Avatar alt="User settings" img={currentUser.photoURL} rounded/>}
              >
                <Dropdown.Header>
                  <span className="block text-sm">
-                   {user.displayName}
+                   {currentUser.displayName}
                  </span>
                  <span className="block truncate text-sm font-medium">
-                   {user.email}
+                   {currentUser.email}
                  </span>
                
                </Dropdown.Header>
                <div className='flex flex-col'>
+                <Link to="/profile">
                <span className='border-b border-gray-100 pb-2'>
                   Profile
                  </span>
+                 </Link>
+
                <span>
                   <button onClick={handleSignOut} className='py-2'>Sign out</button>
                  </span>

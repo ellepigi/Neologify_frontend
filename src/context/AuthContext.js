@@ -7,13 +7,13 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 
  export function AuthProvider({children}) {
   
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user); 
+      setCurrentUser(user); 
       setIsLoading(false);
     });
       return () => unsubscribe();
@@ -31,7 +31,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
   };
 
   const value = {
-    user,
+    currentUser,
     handleSignIn,
     handleSignOut,
     isLoading

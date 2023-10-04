@@ -19,10 +19,10 @@ function App() {
       <Router>
         <Nav />
         <Routes>
-        <Route path="/profile" element={
+        <Route path="/profile/*" element={
         <PrivateRoute>
         <Profile/>
-        </PrivateRoute>} />
+       </PrivateRoute>} />
           <Route path="/" element={<Section />} />
           <Route path="/create" element={<Create />} />
           <Route path="/contact" element={<Section />} />

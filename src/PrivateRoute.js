@@ -4,13 +4,12 @@ import { Spinner } from 'flowbite-react'
 
 export default function PrivateRoute({children}) {
   
-  const {user, isLoading} = useAuthValue()
-  console.log(user)
+  const {currentUser, isLoading} = useAuthValue()
 
   if(isLoading){
     return <Spinner/>
   }
-  if(!user && !isLoading ){
+  if(!currentUser && !isLoading ){
     return <Navigate to='/' replace/>
   }
 
