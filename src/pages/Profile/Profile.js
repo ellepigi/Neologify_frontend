@@ -19,16 +19,14 @@ export default function Profile() {
 
   return (
     <div className='min-h-screen flex'>
-       <div className='sidebar flex flex-col items-center justify-between h-screen w-64 shadow-lg'>
-       <div>
+       <div className='sidebar flex flex-col items-center  h-100 w-64 shadow-lg'>
 
           <img src={currentUser.photoURL} alt='#' className='my-8 rounded-full' />
-          <ul>
-            <Link to="/profile"><li>My Posts</li></Link>
-            <Link to="/profile/settings"> <li>Settings</li></Link>
+          <ul className='w-full'>
+            <Link to="/profile"><li className='py-3 w-full hover:bg-gray-100 border-t border-b border-gray-200 '>My Posts</li></Link>
+            <Link to="/profile/settings"> <li className='py-3 w-full hover:bg-gray-100 border-b border-gray-200 '>Settings</li></Link>
           </ul>
-        </div>
-          <Button className='mb-12' onClick={SignOut}>Logout</Button>
+          <Button className='mt-12' onClick={SignOut}>Logout</Button>
        </div>
 
           <Routes>
