@@ -4,7 +4,13 @@ import { Rating } from 'flowbite-react'
 
 export default function Card(props){
 
+  const { title, comment } = props;
+  const maxCommentLength = 20; 
 
+
+  const shortComment = comment.length > maxCommentLength
+    ? `${comment.substring(0, maxCommentLength)}...`
+    : comment;
 	
 
   return (
@@ -15,7 +21,7 @@ export default function Card(props){
   </Link>
      <p className='mt-2 text-sm'>{props.language}</p> 
     <p class="text-gray-700 text-base italic my-5">
-      "{props.comment}"
+      "{shortComment}"
     </p>
     <div className='flex items-center justify-between gap-2 mt-2'>
     <div className='flex items-center gap-2'>

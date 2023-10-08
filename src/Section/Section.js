@@ -9,6 +9,7 @@ import ReactPaginate from 'react-paginate';
 export default function Section  () {
 
   const [latest, setLatest] = useState([]);
+  const [highest, setHighest] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(0); 
@@ -22,7 +23,6 @@ const pageCount = Math.ceil(latest.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
 const endIndex = startIndex + itemsPerPage;
 const currentItems = latest.slice(startIndex, endIndex);
-  
  
   
   useEffect( () => {
@@ -30,6 +30,7 @@ const currentItems = latest.slice(startIndex, endIndex);
     const data = await getAllCards();
     data.sort((a, b) => b.createdAt - a.createdAt);
     setLatest(data);
+    setHighest(data);
     setLoading(false);
     
    }
@@ -77,7 +78,7 @@ const currentItems = latest.slice(startIndex, endIndex);
     <h1 className='text-left text-4xl ml-2 mt-8'>Highest Rated</h1>
 
 <div className='cards flex mt-8 space-y-4 gap-2 flex-wrap w-full justify-center'>
-  {latest.map(item => (
+  {highest.map(item => (
     
     <Card  key={item.id} id={item.id} title={item.title} comment={item.comment} language={item.language}
     photo={item.photo} username={item.userName} tags={item.tags} />
