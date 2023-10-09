@@ -42,7 +42,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 
    return (
      <AuthContext.Provider value={value}>
-       {children}
+       {!isLoading && children}
      </AuthContext.Provider>
    )
  }
