@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAllCards } from "../serivces/cardService";
 import { Spinner } from "flowbite-react";
-import Card from "../Card/Card";
+import Card from "../components/Card";
 
 export default function TagList() {
   const { tagName } = useParams();
@@ -35,7 +35,7 @@ export default function TagList() {
   }
 
   return (
-    <div className="page m-10 mb-12 h-full">
+    <div className="page m-10 mb-12 h-screen">
       <h1 className="text-left text-4xl ml-2">
         {tagName.charAt(0).toUpperCase() + tagName.slice(1)}
       </h1>

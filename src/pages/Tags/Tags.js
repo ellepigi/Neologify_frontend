@@ -42,7 +42,7 @@ export default function Tags() {
   }
 
   return (
-    <div className="page m-10 mb-12 h-full">
+    <div className="page m-10 mb-12 h-screen">
       <h1 className="text-left text-4xl ml-2">Tags</h1>
       <div className="min-h-screen flex justify-center items-start">
         {tags.map((tag, index) => (

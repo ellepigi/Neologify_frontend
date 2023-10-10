@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllCards } from "../serivces/cardService";
 import { Spinner } from "flowbite-react";
-import Card from "../Card/Card";
+import Card from "../components/Card";
 import "../index.css";
 import ReactPaginate from "react-paginate";
 
@@ -42,7 +42,7 @@ export default function Section() {
   }
 
   return (
-    <div className="page m-10 mb-12 h-full">
+    <div className="page m-10 mb-12 h-screen">
       <h1 className="text-left text-4xl ml-2">Latest</h1>
       <div>
         <div className="cards flex mt-8 space-y-4 gap-2 flex-wrap w-full justify-center">

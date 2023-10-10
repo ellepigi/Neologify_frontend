@@ -11,7 +11,6 @@ import {
   getDocs,
   where,
   query,
-  orderBy,
   serverTimestamp,
 } from "firebase/firestore";
 import { format } from "date-fns";
@@ -92,7 +91,7 @@ export default function Details() {
             username,
             cardId,
             pic,
-            createdAt: new Date(), // You can use the current date here
+            createdAt: new Date(), 
           },
         ]);
       }
@@ -170,16 +169,8 @@ export default function Details() {
                       {item.username}
                     </p>
                     <p class="text-sm text-gray-600 dark:text-gray-400">
-                      {item.createdAt ? (
-                        <time title="February 8th, 2022">
-                          {format(
-                            item.createdAt.toDate(),
-                            "MMMM dd, yyyy HH:mm:ss"
-                          )}
-                        </time>
-                      ) : (
-                        <span>No date available</span>
-                      )}
+                      
+                       
                     </p>
                   </div>
                 </footer>
