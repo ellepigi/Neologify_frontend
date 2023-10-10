@@ -85,6 +85,16 @@ export default function Details() {
         });
         setOpenModal("success");
         setComment("");
+        setComments((prevComments) => [
+          ...prevComments,
+          {
+            comment,
+            username,
+            cardId,
+            pic,
+            createdAt: new Date(), // You can use the current date here
+          },
+        ]);
       }
     } catch (error) {
       setOpenModal("error");
@@ -127,6 +137,8 @@ export default function Details() {
             </label>
             <textarea
               id="comment"
+              minLength={10}
+              maxLength={256}
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Leave a comment..."
               required
@@ -145,7 +157,7 @@ export default function Details() {
             comments.map((item, index) => (
               <article
                 key={index}
-                class="p-6 text-base bg-white rounded-lg dark:bg-gray-900"
+                class="p-6 border-b border-gray-200 text-base bg-white rounded-lg dark:bg-gray-900"
               >
                 <footer class="flex justify-between items-center mb-2">
                   <div class="flex items-center">

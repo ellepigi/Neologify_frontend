@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Rating } from "flowbite-react";
 
 export default function Card(props) {
-  const { title, comment } = props;
+  const { comment } = props;
   const maxCommentLength = 20;
 
   const shortComment =

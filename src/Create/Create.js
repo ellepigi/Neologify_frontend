@@ -125,7 +125,6 @@ export default function Create() {
                 value={comment}
                 onChange={(event) => setComment(event.target.value)}
                 className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                placeholder="Write a comment..."
                 required
               ></textarea>
             </div>
@@ -166,7 +165,7 @@ export default function Create() {
               className="inline-flex mt-4 items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 
             hover:bg-blue-900 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
             >
-              Post comment
+              Submit
             </button>
           </form>
         </div>
