@@ -4,13 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth"
  
 const firebaseConfig = {
-  apiKey: "AIzaSyB2ckOSWjfmw-xVL7AcMQLGJ30NOPjn-Ho",
-  authDomain: "neologify.firebaseapp.com",
-  projectId: "neologify",
-  storageBucket: "neologify.appspot.com",
-  messagingSenderId: "122161957155",
-  appId: "1:122161957155:web:9cec63ec33ed6a1c04a496",
-  measurementId: "G-6571FSK2M3"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 // Initialize Firebase
