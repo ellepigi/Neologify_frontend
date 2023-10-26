@@ -44,10 +44,10 @@ export default function Tags() {
   return (
     <div className="page m-10 mb-12 h-screen">
       <h1 className="text-left text-4xl ml-2">Tags</h1>
-      <div className="min-h-screen flex justify-center items-start">
+      <div className="flex justify-center items-start flex-wrap mt-8">
         {tags.map((tag, index) => (
           <Link key={index} to={`/tag/${tag}`}>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-gray-300 mr-2 mb-2">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-gray-300 mr-2 mt-1">
               {tag}
             </span>
           </Link>

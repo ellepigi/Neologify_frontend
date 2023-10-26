@@ -114,7 +114,6 @@ export default function Details() {
         <div className="mb-16">
           <h1 className="font-bold text-xl mb-4">{card.title}</h1>
           <p className="text-sm mb-8">{card.language}</p>
-
           <p className="text-md italic mb-8">"{card.comment}"</p>
           {card.tags &&
             card.tags.map((tag, index) => (
