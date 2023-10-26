@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { getAllCards } from "../../serivces/cardService";
 import { Spinner } from "flowbite-react";
 import Card from "../../components/Card/Card";
-import "../../index.css";
 import ReactPaginate from "react-paginate";
+
+//css
+import "../../index.css";
+import './Section.css';
 
 export default function Section() {
   const [latest, setLatest] = useState([]);
@@ -68,7 +71,7 @@ export default function Section() {
           pageRangeDisplayed={5}
           onPageChange={handlePageChange}
           containerClassName={"pagination"}
-          activeClassName={"active"}
+          activeClassName={"activePage"}
         />
       </div>
     </div>
