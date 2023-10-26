@@ -9,7 +9,6 @@
     list-style: none; 
     padding: 0; 
     margin-top: 1rem;
-    background-color: #f0f0f0;
 
 
   }
@@ -17,6 +16,7 @@
   .pagination li {
     display: inline; 
     margin-right: 5px;
+
 
   }
   
@@ -26,6 +26,8 @@
     border: 1px solid #ccc;
     color: #333; 
     display: inline-block;
+    background-color: #f0f0f0;
+
   }
   
   .pagination a:hover {
@@ -33,7 +35,7 @@
     color: #fff; 
   }
 
-  .activePage{
+  .activePage a{
     background-color: rgb(153, 152, 152);
     border-radius: 3px; 
 
