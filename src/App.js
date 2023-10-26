@@ -1,9 +1,9 @@
 import "./App.css";
-import Nav from "./Navbar/Navbar";
-import Section from "./Section/Section";
-import Create from "./Create/Create";
-import FooterSection from "./Footer/Footer";
-import Details from "./Details/Details";
+import Nav from "./components/Navbar/Navbar";
+import Section from "./pages/Section/Section";
+import Create from "./pages/Create/Create"
+import FooterSection from "./components/Footer/Footer";
+import Details from "./pages/Details/Details"
 import Tags from "./pages/Tags/Tags";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TagList from "./pages/TagList";

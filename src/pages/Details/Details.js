@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Spinner, Button } from "flowbite-react";
 import { useParams } from "react-router-dom";
-import { getAllCards } from "../serivces/cardService";
+import { getAllCards } from "../../serivces/cardService";
 import { Link } from "react-router-dom";
-import { useAuthValue } from "../context/AuthContext";
-import { db } from "../firebaseConfig";
+import { useAuthValue } from "../../context/AuthContext";
+import { db } from "../../firebaseConfig";
 import {
   addDoc,
   collection,
@@ -21,8 +21,8 @@ export default function Details() {
   const [comment, setComment] = useState("");
   const [error, setError] = useState("");
   const { currentUser } = useAuthValue();
-  const username = currentUser.displayName;
-  const pic = currentUser.photoURL;
+  const username = currentUser? currentUser.displayName : null;
+  const pic = currentUser? currentUser.photoURL: null;
 
   const commentsCollectionRef = collection(db, "comments");
 

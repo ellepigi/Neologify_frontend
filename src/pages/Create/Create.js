@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db, auth } from "../firebaseConfig.js";
+import { db, auth } from "../../firebaseConfig";
 import { Button, Modal } from "flowbite-react";
 
 export default function Create() {

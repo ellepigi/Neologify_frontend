@@ -3,7 +3,7 @@ import { useAuthValue } from '../../../context/AuthContext';
 import { getAllCards } from '../../../serivces/cardService';
 import { Spinner } from 'flowbite-react' 
 import ReactPaginate from 'react-paginate';
-import Card from '../../../components/Card';
+import Card from '../../../components/Card/Card';
 import '../../../index.css'
 
 

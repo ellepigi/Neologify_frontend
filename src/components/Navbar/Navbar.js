@@ -1,12 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Button, Navbar, Dropdown, Avatar } from 'flowbite-react';
-import { useAuthValue } from '../context/AuthContext';
+import { useAuthValue } from '../../context/AuthContext';
+import "./Navbar.css"
 
 export default function Nav() {
   
   const { currentUser, handleSignIn, handleSignOut } = useAuthValue();
-
+  
+  const linkActiveStyle = {
+    color: 'blue', 
+  };
   
   return (
 
@@ -70,28 +74,23 @@ export default function Nav() {
         <Navbar.Toggle />
       </div>
    
-      <Navbar.Collapse >
+      <Navbar.Collapse  id='links'>
 
-        <Link className='hover:text-blue-500'
-          active
-          to="/"
-        >
-          <p>
-            Home
-          </p>
-        </Link>
-        <Link className='hover:text-blue-500' to="/create">
+        <NavLink className='hover:text-blue-500' to="/"  >  
+        Home
+       </NavLink>
+        <NavLink className='hover:text-blue-500'  to="/create">
           Submit
-        </Link>
+        </NavLink>
         
 
-        <Link className='hover:text-blue-500' to="/tags">
+        <NavLink className='hover:text-blue-500'  to="/tags">
           Tags
-        </Link>
+        </NavLink>
 
-        <Link className='hover:text-blue-500' to="#">
+        <NavLink className='hover:text-blue-500'  to="/about">
           About
-        </Link>
+        </NavLink> 
         
       </Navbar.Collapse>
     </Navbar>

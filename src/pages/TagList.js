@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAllCards } from "../serivces/cardService";
 import { Spinner } from "flowbite-react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 
 export default function TagList() {
   const { tagName } = useParams();

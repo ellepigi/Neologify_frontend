@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getAllCards } from "../serivces/cardService";
+import { getAllCards } from "../../serivces/cardService";
 import { Spinner } from "flowbite-react";
-import Card from "../components/Card";
-import "../index.css";
+import Card from "../../components/Card/Card";
+import "../../index.css";
 import ReactPaginate from "react-paginate";
 
 export default function Section() {
